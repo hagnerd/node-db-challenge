@@ -1,7 +1,11 @@
 const db = require("../db");
+const { convertCompletedToBool } = require("../utils");
 
-function getAllProjects() {
-  return db.select("*").from("projects");
+async function getAllProjects() {
+  const rawProjects = await db.select("*").from("projects");
+  const projects = rawProjects.map(convertCompletedToBool);
+
+  return projects;
 }
 
 async function createProject(project) {
