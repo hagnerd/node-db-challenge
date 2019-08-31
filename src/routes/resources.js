@@ -15,7 +15,20 @@ function validateResourceInput(req, res, next) {
   next();
 }
 
-router.get("/", (req, res) => {});
+router.get("/", async (_req, res) => {
+  try {
+    const resources = await Resources.getAllResources();
+
+    res.json({
+      resources
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: "internal server error",
+      message: error.message
+    });
+  }
+});
 
 router.post("/", validateResourceInput, async (req, res) => {
   try {

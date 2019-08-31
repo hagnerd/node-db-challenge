@@ -13,7 +13,9 @@ async function createResource(resource) {
   return { id, description: null, ...resource };
 }
 
-function getAllResources() {}
+function getAllResources() {
+  return db.select("*").from("resources");
+}
 
 module.exports = {
   createResource,
