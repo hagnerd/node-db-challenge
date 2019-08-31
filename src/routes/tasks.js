@@ -31,7 +31,20 @@ async function validateTaskInput(req, res, next) {
   next();
 }
 
-router.get("/", (req, res) => {});
+router.get("/", async (_req, res) => {
+  try {
+    const tasks = await Tasks.getAllTasks();
+
+    res.json({
+      tasks
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: "internal server error",
+      message: error.message
+    });
+  }
+});
 
 router.post("/", validateTaskInput, async (req, res) => {
   try {
