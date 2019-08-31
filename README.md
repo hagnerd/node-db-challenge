@@ -40,11 +40,30 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
 
+    Relational Database Management Systems are the software systems that manage
+    storing, updating, and deleting the data. They use a relational model system
+    that allows use to create models (collections of a data that match a shape),
+    and manage the relationships between different types of models.
+
+    SQL is a query language that was designed to interact with RDBMS'. We can
+    write SQL to get data out of the RDBMS, update the data, insert new data,
+    and even delete the data.
+
 - [ ] Why do tables need a `primary key`?
+
+    Tables need primary keys so that they can have a unique identifier by which
+    to query for a specific resource. 
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
+    A column that references the primary key of another table is called a
+    foreign key.
+
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+
+    To allow a many to many relationship between tables we need an intermediary
+    table, which stores the primary key of each table as a foreign key, and
+    creates a mapping of the relationship.
 
 ## Minimum Viable Product
 
