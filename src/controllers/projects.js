@@ -1,6 +1,8 @@
 const db = require("../db");
 
-async function getAllProjects() {}
+function getAllProjects() {
+  return db.select("*").from("projects");
+}
 
 async function createProject(project) {
   const [id] = await db.from("projects").insert(project);
@@ -15,5 +17,6 @@ async function createProject(project) {
 }
 
 module.exports = {
-  createProject
+  createProject,
+  getAllProjects
 };

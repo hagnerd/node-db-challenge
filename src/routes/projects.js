@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Project = require("../controllers/projects");
+const Projects = require("../controllers/projects");
 
 function validateProjectInput(req, res, next) {
   const { name, description = null, completed = false } = req.body;
@@ -15,10 +15,23 @@ function validateProjectInput(req, res, next) {
   next();
 }
 
-router.get("/", (req, res) => {});
+router.get("/", async (_req, res) => {
+  try {
+    const projects = await Projects.getAllProjects();
+
+    res.json({
+      projects
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: "internal server error",
+      message: error.message
+    });
+  }
+});
 router.post("/", validateProjectInput, async (req, res) => {
   try {
-    const project = await Project.createProject(req.projectInput);
+    const project = await Projects.createProject(req.projectInput);
 
     res.status(201).json({
       project
