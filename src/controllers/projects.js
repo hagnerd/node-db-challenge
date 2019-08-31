@@ -16,7 +16,17 @@ async function createProject(project) {
   return { id, ...project };
 }
 
+async function getProjectById(id) {
+  const [project] = await db
+    .select("*")
+    .from("projects")
+    .where({ id });
+
+  return !!project;
+}
+
 module.exports = {
   createProject,
-  getAllProjects
+  getAllProjects,
+  getProjectById
 };
