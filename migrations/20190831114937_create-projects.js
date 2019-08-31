@@ -17,7 +17,8 @@ exports.up = function(knex) {
 
     tbl.text("description");
 
-    tbl.boolean("completed").defaultsTo(false);
+    tbl
+      .boolean("completed").notNullable();
   });
 };
 
